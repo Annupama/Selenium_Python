@@ -29,4 +29,3 @@ SeleniumPython-ThanushaKotaprolu
 If any questions please feel free to message Mujeeb.
 **Note**:- Do not try to compare and pull from the GitHub from other Repos and also make sure you are not pushing changes to the main (However the permission is denied).
 **Note**:- Don't make any changes in the .gitignore file and README.md files in your branches and also in the main.
-
