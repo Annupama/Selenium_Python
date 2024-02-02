@@ -31,3 +31,6 @@ There are three ways to read data from a text file:
 Using read()
 Using readline()
 Using readlines()
+
+rstrip(): This function strips each line of a file off spaces from the right-hand side.
+lstrip(): This function strips each line of a file off spaces from the left-hand side.
