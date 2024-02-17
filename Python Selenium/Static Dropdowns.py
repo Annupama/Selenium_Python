@@ -22,6 +22,7 @@ sleep(5)
 dropdown.select_by_visible_text("Female")
 sleep(5)
 dropdown.select_by_index(0)
+# dropdown.select_by_value()
 
 driver.find_element(By.XPATH, "//input[@type='submit']").click()
 
