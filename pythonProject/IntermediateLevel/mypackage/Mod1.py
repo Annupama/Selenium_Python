@@ -1,2 +1,2 @@
-def package():
-    print("Welcome to package")
+def greet(name):
+    print(f"Hello, {name}!")
