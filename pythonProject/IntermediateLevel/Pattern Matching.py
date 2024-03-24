@@ -75,6 +75,9 @@ mo3 = batRegex.search('The Adventures of Batman')== None
 print(mo3)      # Output is True
 
 
+name = "Fake Python"
+name.replace("Fake", "Real")
+
 
 
 

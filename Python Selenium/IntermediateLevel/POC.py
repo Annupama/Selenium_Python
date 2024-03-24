@@ -8,16 +8,20 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-expectedList = ['Cucumber - 1 Kg', 'Raspberry - 1/4 Kg', 'Strawberry - 1/4 Kg']
-uppered_expectedList = list(map(lambda expectedlist1: expectedlist1.upper(),expectedList))
-print(uppered_expectedList)
+
+
+from pythonProject.IntermediateLevel import TestModule
+
+# expectedList = ['Cucumber - 1 Kg', 'Raspberry - 1/4 Kg', 'Strawberry - 1/4 Kg']
+# uppered_expectedList = list(map(lambda expectedlist1: expectedlist1.upper(),expectedList))
+print(TestModule.uppered_expectedList)
 actualList =[]
 
-
-service_obj = Service("C:/Users/Anupama Saranu/Documents/chromedriver.exe")
-driver = webdriver.Chrome(service=service_obj)
+URL = TestModule.service_obj
+driver = webdriver.Chrome(service=TestModule.service_obj)
 driver.maximize_window()
 driver.implicitly_wait(2)
+
 # 5 seconds is max time out. 2 seconds (3 seconds save)
 driver.get("https://rahulshettyacademy.com/seleniumPractise/#/")
 driver.find_element(By.CSS_SELECTOR,".search-keyword").send_keys("ber")
@@ -30,22 +34,25 @@ for result in results:
     actualList.append(result.find_element(By.XPATH,"h4").text)
     result.find_element(By.XPATH,"div/button").click()
 
-assert expectedList == actualList
+assert TestModule.expectedList == actualList
 
 driver.find_element(By.CSS_SELECTOR,"img[alt='Cart']").click()  #15
 driver.find_element(By.XPATH,"//button[text()='PROCEED TO CHECKOUT']").click()
-
-#Sum validation
-prices = driver.find_elements(By.CSS_SELECTOR,"tr td:nth-child(5) p")
-sum = 0
-# sum1 = reduce([lambda sum, price: [sum + int(price.text)] for price in prices])
+# def calculate():
+# Sum validation
+prices = driver.find_elements(By.CSS_SELECTOR, "tr td:nth-child(5) p")
+add = 0
 for price in prices:
-   sum = sum + int(price.text)
+    add += int(price.text)
+print(add)
 
-print(sum)
+# sum1 = reduce([lambda sum, price: [sum + int(price.text)] for price in prices])
+
+
+# print(sum)
 totalAmount = int(driver.find_element(By.CSS_SELECTOR, ".totAmt").text)
 
-assert sum == totalAmount
+assert add == totalAmount
 
 driver.find_element(By.CSS_SELECTOR,".promoCode").send_keys("Anupama")
 driver.find_element(By.CSS_SELECTOR,".promoBtn").click()
