@@ -77,3 +77,17 @@ for d in range(5):
     if d == 3:
         continue
     print(d)
+
+
+from itertools import chain
+
+# Concatenate ranges
+new_range = chain(range(5), range(5, 10))
+for num in new_range:
+    print(num, end=' ')
+# Output 0 1 2 3 4 5 6 7 8 9
+
+# slicing
+for i in range(10)[3:8]:
+    print(i, end=' ')
+# output 3 4 5 6 7
