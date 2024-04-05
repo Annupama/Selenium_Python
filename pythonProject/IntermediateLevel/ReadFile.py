@@ -32,10 +32,17 @@ file.close()
 
 
 # Open the text file in reading mode
-with open('text_file.txt', 'r') as f:
+with open('text.txt', 'r') as f:
   # Read all the lines of the text file into a list
   lines = f.readlines()
   # Iterate over the lines, and skip every other line
   for i in range(0, len(lines), 2):
     # Print the current line
     print(lines[i])
+
+import csv
+
+with open('in.csv', 'w') as csvfile:
+  reader = csv.DictReader(csvfile)
+  for row in reader:
+    print(row['first_name'], row['last_name'])

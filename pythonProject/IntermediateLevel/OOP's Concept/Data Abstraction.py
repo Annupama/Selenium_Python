@@ -16,4 +16,4 @@ myObject.add(2)
 myObject.add(5)
 
 # This line causes error
-print(myObject.__hiddenVariable)
+#print(myObject.__hiddenVariable)
