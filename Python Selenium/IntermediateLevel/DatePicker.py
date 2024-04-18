@@ -1,13 +1,19 @@
 import time
 
+
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from DriverClass import WebDriverFactory
 
 
 class DatePickerAutomation:
+
     def __init__(self):
-        self.driver = None
+        # Create an instance of WebDriverFactory
+        self.driver_factory = WebDriverFactory()
+        self.driver = self.driver_factory.get_driver()
 
     def select_date(self, date):
         print("test")
