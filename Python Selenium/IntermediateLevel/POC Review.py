@@ -1,14 +1,13 @@
 #from selenium.webdriver.chrome import webdriver
 from selenium import webdriver
 from selenium.webdriver import ActionChains
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 import time
-from selenium.webdriver.support.select import Select
+from selenium.webdriver.support import expected_conditions as EC, expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 
-from DatePicker import DatePickerAutomation
 from DriverClass import WebDriverFactory
-# service_obj=Service()
+import ProjectModule as pm
 
 
 class addProject:
@@ -23,11 +22,11 @@ class addProject:
         self.driver.implicitly_wait(2)
         time.sleep(3)
 
-        self.driver.find_element(By.XPATH, "//input[@type='email']").send_keys("chorus.automation@cognine.com")
+        self.driver.find_element(By.XPATH, "//input[@type='email']").send_keys(pm.login["email"])
         time.sleep(2)
         self.driver.find_element(By.XPATH, "//input[@type='submit']").click()
         time.sleep(2)
-        self.driver.find_element(By.XPATH, "//input[@type='password']").send_keys("Welcome2Cognine")
+        self.driver.find_element(By.XPATH, "//input[@type='password']").send_keys(pm.login["password"])
         time.sleep(3)
         self.driver.find_element(By.XPATH, "//input[@id='idSIButton9']").click()
         self.driver.implicitly_wait(5)
@@ -38,7 +37,7 @@ class addProject:
         self.driver.find_element(By.CSS_SELECTOR, "img[alt='Project Management']").click()
         time.sleep(3)
         self.driver.implicitly_wait(2)
-        self.driver.switch_to.frame("contentFrame")
+        self.driver.switch_to.frame("undefined")
         self.driver.implicitly_wait(5)
         self.driver.find_element(By.XPATH, "//button[normalize-space()='Add Project']").click()
         time.sleep(3)
@@ -63,12 +62,53 @@ class addProject:
         email = self.driver.find_element(By.XPATH, "//input[@placeholder='Enter Email']")
         email.send_keys("test.automate@cognine.com")
         time.sleep(3)
-        DatePicker = DatePickerAutomation()
+        dropdown_element = self.driver.find_element(By.XPATH,
+                                               "//span[contains(@class, 'ng-star-inserted') and text()='Select Technologies']")
+        dropdown_element.click()
+        options_to_select = [".Net","Angular"]
+        for option in options_to_select:
+            label = self.driver.find_element(By.XPATH,
+                                             "//label[contains(@class, 'ng-star-inserted') and text()='{}']".format(
+                                                 option))
+
+            label.click()
         time.sleep(3)
-        date_to_select = '15-Apr-2024'
-        DatePicker.select_date(date_to_select)
+        body = self.driver.find_element(By.XPATH, "//body")
+        action.move_to_element(body).click().perform()
         time.sleep(3)
-        print("click on button")
+        # Start Date
+        startdate = WebDriverWait(self.driver, 10).until(
+            expected_conditions.element_to_be_clickable((By.XPATH,
+                                                         "//mat-datepicker-toggle[@class='mat-datepicker-toggle ng-tns-c50-1']//span[@class='mat-button-wrapper']//*[name()='svg']"))
+        )
+        startdate.click()
+        time.sleep(5)
+        date_to_select=WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[@class='mat-calendar-body-cell' and @aria-label='April 25, 2024']")))
+        date_to_select.click()
+        time.sleep(5)
+        # End Date
+        end_date = WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable((By.XPATH,
+                                                     "//mat-datepicker-toggle[@class='mat-datepicker-toggle ng-tns-c50-2']//span[@class='mat-button-wrapper']//*[name()='svg']")))
+
+        end_date.click()
+        end_date_select = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(
+            (By.XPATH, "//button[@class='mat-calendar-body-cell' and @aria-label='April 25, 2024']")))
+        end_date_select.click()
+
+        file_input = WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, "//label[normalize-space()='Choose File']")))
+        file_input.click()
+        self.driver.execute_script("arguments[0].value = arguments[1]", file_input, pm.login["filepath"])
+        time.sleep(5)
+        add=self.driver.find_element(By.XPATH,"//button[@type='submit']").click()
+
+
+        # DatePicker = DatePickerAutomation()
+        # time.sleep(3)
+        # date_to_select = '15-Apr-2024'
+        # DatePicker.select_date(date_to_select)
+        # time.sleep(3)
+        # print("click on button")
 
 
 if __name__ == "__main__":
