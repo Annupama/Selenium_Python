@@ -17,5 +17,4 @@ if matches:
 else:
     print("Pattern not found on the page.")
 
-# Close the browser
 driver.quit()
