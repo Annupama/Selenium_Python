@@ -22,51 +22,50 @@ class addProject:
         self.driver.implicitly_wait(2)
         time.sleep(3)
 
-        self.driver.find_element(By.XPATH, "//input[@type='email']").send_keys(pm.login["email"])
+        self.driver.find_element(By.XPATH, pm.f_xpath["email"]).send_keys(pm.login["email"])
         time.sleep(2)
-        self.driver.find_element(By.XPATH, "//input[@type='submit']").click()
+        self.driver.find_element(By.XPATH, pm.f_xpath["Submit"]).click()
         time.sleep(2)
-        self.driver.find_element(By.XPATH, "//input[@type='password']").send_keys(pm.login["password"])
+        self.driver.find_element(By.XPATH, pm.f_xpath["password"]).send_keys(pm.login["password"])
         time.sleep(3)
-        self.driver.find_element(By.XPATH, "//input[@id='idSIButton9']").click()
+        self.driver.find_element(By.XPATH, pm.f_xpath["SignIn"]).click()
         self.driver.implicitly_wait(5)
-        self.driver.find_element(By.XPATH, "//input[@id='idSIButton9']").click()
+        self.driver.find_element(By.XPATH, pm.f_xpath["yes"]).click()
         self.driver.implicitly_wait(20)
         time.sleep(5)
         # driver.find_element(By.XPATH,"//input[@id='6']").click()
-        self.driver.find_element(By.CSS_SELECTOR, "img[alt='Project Management']").click()
+        self.driver.find_element(By.CSS_SELECTOR, pm.f_xpath["pmicon"]).click()
         time.sleep(3)
         self.driver.implicitly_wait(2)
         self.driver.switch_to.frame("undefined")
         self.driver.implicitly_wait(5)
-        self.driver.find_element(By.XPATH, "//button[normalize-space()='Add Project']").click()
+        self.driver.find_element(By.XPATH, pm.f_xpath["addproject"]).click()
         time.sleep(3)
         # Adding new project in Project Management
 
-        clientName = self.driver.find_element(By.XPATH, "//input[@type='text']")
-        clientName.send_keys("client 1")
+        clientName = self.driver.find_element(By.XPATH, pm.f_xpath["clientName"])
+        clientName.send_keys(pm.Proj1["clientName"])
         time.sleep(3)
-        client = self.driver.find_element(By.CSS_SELECTOR,
-                                     "mat-option[class='mat-option mat-focus-indicator ng-star-inserted'] span")
+        client = self.driver.find_element(By.CSS_SELECTOR, pm.f_xpath["client"])
         action = ActionChains(self.driver)
         action.move_to_element(client).click().perform()
         time.sleep(5)
-        projectName = (self.driver.find_element(By.XPATH, "//input[@placeholder='Enter Project Name']"))
-        projectName.send_keys("Test Automate")
+        projectName = (self.driver.find_element(By.XPATH, pm.f_xpath["projectName"]))
+        projectName.send_keys(pm.Proj1["projectName"])
         time.sleep(3)
-        testDescription = (self.driver.find_element(By.XPATH, "//textarea[@placeholder='Enter Description']"))
-        testDescription.send_keys("Test")
+        testDescription = (self.driver.find_element(By.XPATH, pm.f_xpath["testDescription"]))
+        testDescription.send_keys(pm.Proj1["testDescription"])
         time.sleep(3)
-        notes = self.driver.find_element(By.XPATH, "//textarea[@placeholder='Enter Notes']")
-        notes.send_keys("Testing")
-        email = self.driver.find_element(By.XPATH, "//input[@placeholder='Enter Email']")
-        email.send_keys("test.automate@cognine.com")
+        notes = self.driver.find_element(By.XPATH, pm.f_xpath["notes"])
+        notes.send_keys(pm.Proj1["notes"])
+        email = self.driver.find_element(By.XPATH, pm.f_xpath["email"])
+        email.send_keys(pm.Proj1["email"])
         time.sleep(3)
         dropdown_element = self.driver.find_element(By.XPATH,
                                                "//span[contains(@class, 'ng-star-inserted') and text()='Select Technologies']")
         dropdown_element.click()
-        options_to_select = [".Net","Angular"]
-        for option in options_to_select:
+        technologies = [".Net", "Angular"]
+        for option in technologies:
             label = self.driver.find_element(By.XPATH,
                                              "//label[contains(@class, 'ng-star-inserted') and text()='{}']".format(
                                                  option))
@@ -79,20 +78,20 @@ class addProject:
         # Start Date
         startdate = WebDriverWait(self.driver, 10).until(
             expected_conditions.element_to_be_clickable((By.XPATH,
-                                                         "//mat-datepicker-toggle[@class='mat-datepicker-toggle ng-tns-c50-1']//span[@class='mat-button-wrapper']//*[name()='svg']"))
+                                                         "//mat-datepicker-toggle[@class ='mat-datepicker-toggle ng-tns-c53-1']//span[@class='mat-button-wrapper']//*[name()='svg']"))
+
         )
         startdate.click()
         time.sleep(5)
-        date_to_select=WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[@class='mat-calendar-body-cell' and @aria-label='April 25, 2024']")))
+        date_to_select=WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[@class='mat-calendar-body-cell mat-calendar-body-active' and @aria-label='May 2, 2024']")))
         date_to_select.click()
         time.sleep(5)
         # End Date
         end_date = WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable((By.XPATH,
-                                                     "//mat-datepicker-toggle[@class='mat-datepicker-toggle ng-tns-c50-2']//span[@class='mat-button-wrapper']//*[name()='svg']")))
-
+                                                     "//mat-datepicker-toggle[@class ='mat-datepicker-toggle ng-tns-c53-2']//span[@class='mat-button-wrapper']//*[name()='svg']// *[name()='path' and contains( @ d, 'M19 3h-1V1')")))
         end_date.click()
         end_date_select = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(
-            (By.XPATH, "//button[@class='mat-calendar-body-cell' and @aria-label='April 25, 2024']")))
+            (By.XPATH, "//button[@class='mat-calendar-body-cell' and @aria-label='May 25, 2024']")))
         end_date_select.click()
 
         file_input = WebDriverWait(self.driver, 10).until(
@@ -100,7 +99,8 @@ class addProject:
         file_input.click()
         self.driver.execute_script("arguments[0].value = arguments[1]", file_input, pm.login["filepath"])
         time.sleep(5)
-        add=self.driver.find_element(By.XPATH,"//button[@type='submit']").click()
+        add = self.driver.find_element(By.XPATH,"//button[@type='submit']")
+        add.click()
 
 
         # DatePicker = DatePickerAutomation()
