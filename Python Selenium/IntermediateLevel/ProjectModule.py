@@ -1,4 +1,5 @@
 login = {
+  "url": "https://chorusqa.cogninelabs.com/",
   "email": "chorus.automation@cognine.com",
   "password": "Welcome2Cognine",
   "filepath": "C:/Users/Anupama Saranu/Desktop/Test.txt"
@@ -18,16 +19,23 @@ f_xpath = {
   "projectName": "//input[@placeholder='Enter Project Name']",
   "testDescription": "//textarea[@placeholder='Enter Description']",
   "notes": "//textarea[@placeholder='Enter Notes']",
-  "email": "//input[@placeholder='Enter Email']",
+  "emailid": "//input[@placeholder='Enter Email']",
+  "pmod": "//span[contains(@class, 'ng-star-inserted') and text()='Select PMO']",
+  "pmos": "//label[contains(@class, 'ng-star-inserted') and text()='{}']",
+  "technologiesd": "//span[contains(@class, 'ng-star-inserted') and text()='Select Technologies']",
+  "technologiess": "//label[contains(@class, 'ng-star-inserted') and text()='{}']"
 
 }
 
-
-
-
-
 Proj1 = {
-  "clientName": "client 2",
+  "clientName": "CLIENTEK",
+  "projectName": "Test Automate",
+  "testDescription": "Test",
+  "notes": "Testing",
+  "email": "test2.automation@cognine.com"
+}
+Proj2 = {
+  "clientName": "CLIENT 2",
   "projectName": "Test Automate",
   "testDescription": "Test",
   "notes": "Testing",

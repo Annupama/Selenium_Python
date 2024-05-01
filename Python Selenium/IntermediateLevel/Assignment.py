@@ -17,7 +17,7 @@ class addProject:
         self.driver = self.driver_factory.get_driver()
 
     def get(self):
-        self.driver.get("https://chorusqa.cogninelabs.com/")
+        self.driver.get(pm.login["url"])
         self.driver.maximize_window()
         self.driver.implicitly_wait(2)
         time.sleep(3)
@@ -42,7 +42,7 @@ class addProject:
         self.driver.find_element(By.XPATH, pm.f_xpath["addproject"]).click()
         time.sleep(3)
         # Adding new project in Project Management
-
+        wait = WebDriverWait(self.driver, 10)
         clientName = self.driver.find_element(By.XPATH, pm.f_xpath["clientName"])
         clientName.send_keys(pm.Proj1["clientName"])
         time.sleep(3)
@@ -58,43 +58,49 @@ class addProject:
         time.sleep(3)
         notes = self.driver.find_element(By.XPATH, pm.f_xpath["notes"])
         notes.send_keys(pm.Proj1["notes"])
-        email = self.driver.find_element(By.XPATH, pm.f_xpath["email"])
+        email = self.driver.find_element(By.XPATH, pm.f_xpath["emailid"])
         email.send_keys(pm.Proj1["email"])
         time.sleep(3)
-        dropdown_element = self.driver.find_element(By.XPATH,
-                                               "//span[contains(@class, 'ng-star-inserted') and text()='Select Technologies']")
+        pmoelement = self.driver.find_element(By.XPATH, pm.f_xpath["pmod"])
+        pmoelement.click()
+        pmo = ["Divya Bandaru", "Pravallika Kanaparthi"]
+        for option in pmo:
+            label = self.driver.find_element(By.XPATH, pm.f_xpath["pmos"].format(option))
+            label.click()
+        time.sleep(3)
+        body1 = self.driver.find_element(By.XPATH, "//body")
+        action.move_to_element(body1).click().perform()
+        dropdown_element = self.driver.find_element(By.XPATH, pm.f_xpath["technologiesd"])
         dropdown_element.click()
         technologies = [".Net", "Angular"]
         for option in technologies:
-            label = self.driver.find_element(By.XPATH,
-                                             "//label[contains(@class, 'ng-star-inserted') and text()='{}']".format(
-                                                 option))
-
+            label = self.driver.find_element(By.XPATH, pm.f_xpath["technologiess"].format(option))
             label.click()
         time.sleep(3)
         body = self.driver.find_element(By.XPATH, "//body")
         action.move_to_element(body).click().perform()
         time.sleep(3)
         # Start Date
-        startdate = WebDriverWait(self.driver, 10).until(
+        startdate = wait.until(
             expected_conditions.element_to_be_clickable((By.XPATH,
                                                          "//mat-datepicker-toggle[@class ='mat-datepicker-toggle ng-tns-c53-1']//span[@class='mat-button-wrapper']//*[name()='svg']"))
 
         )
         startdate.click()
         time.sleep(5)
-        date_to_select=WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[@class='mat-calendar-body-cell mat-calendar-body-active' and @aria-label='May 2, 2024']")))
+        date_to_select = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@aria-label='May 2, 2024']")))
+        # "//button[@class='mat-calendar-body-cell mat-calendar-body-active' and @aria-label='May 2, 2024']")))
         date_to_select.click()
         time.sleep(5)
         # End Date
-        end_date = WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable((By.XPATH,
-                                                     "//mat-datepicker-toggle[@class ='mat-datepicker-toggle ng-tns-c53-2']//span[@class='mat-button-wrapper']//*[name()='svg']// *[name()='path' and contains( @ d, 'M19 3h-1V1')")))
-        end_date.click()
-        end_date_select = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(
-            (By.XPATH, "//button[@class='mat-calendar-body-cell' and @aria-label='May 25, 2024']")))
-        end_date_select.click()
+        end_date = wait.until(expected_conditions.element_to_be_clickable((By.XPATH,
+                                                     "//mat-datepicker-toggle[@class ='mat-datepicker-toggle ng-tns-c53-2']//span[@class='mat-button-wrapper']//*[name()='svg']")))
 
-        file_input = WebDriverWait(self.driver, 10).until(
+        end_date.click()
+        end_date_select = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@aria-label='May 25, 2024']")))
+                                                                 #"//button[@class='mat-calendar-body-cell' and @aria-label='May 25, 2024']")))
+        end_date_select.click()
+        file_input = wait.until(
             EC.visibility_of_element_located((By.XPATH, "//label[normalize-space()='Choose File']")))
         file_input.click()
         self.driver.execute_script("arguments[0].value = arguments[1]", file_input, pm.login["filepath"])

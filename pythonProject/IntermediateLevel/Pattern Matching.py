@@ -4,7 +4,7 @@ import re
 # regex object
 # phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')- Phone number found
 phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')   # For separating the area code from mobile number
-mo = phoneNumRegex.search('My number is 011-555-4242.')
+mo = phoneNumRegex.search('My number is 415-555-4242.')
 # print('Phone number found: ' + mo.group())      # Output is Phone number found: 415-555-4242
 
 # Parentheses for Grouping and Capturing with Regex
