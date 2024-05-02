@@ -28,7 +28,7 @@ def product_search(product):
     return cart
 
 
-item = ["Sauce Labs Bolt T-Shirt","Sauce Labs Backpack"]
+item = ["Sauce Labs Bolt T-Shirt", "Sauce Labs Backpack"]
 cart_func = product_search(item)
 cart_func()
 

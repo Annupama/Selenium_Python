@@ -52,3 +52,31 @@ my_array = arr.array('i', [1, 2, 3, 4, 5])
 print("Original array:", *my_array)
 my_array.reverse()
 print("Reversed array:", *my_array)
+
+from array import *
+vals = array('i',[2,5,9,8,6])
+print(vals.buffer_info())
+newvalarray = array(vals.typecode,(a for a in vals))
+
+for e in newvalarray:
+    print(e)
+
+arr = array('i',[])
+n = int(input("Enter the length of array"))
+for i in range(n):
+    x = int(input("Enter the next value"))
+    arr.append(x)
+
+print(arr)
+val = int(input("Enter the value for search"))
+
+#Manually
+k = 0
+for j in arr:
+    if j == val:
+        print(k)
+        break
+
+    k+=1
+
+print(arr.index(val))

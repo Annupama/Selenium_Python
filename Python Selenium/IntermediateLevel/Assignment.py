@@ -17,11 +17,13 @@ class addProject:
         self.driver = self.driver_factory.get_driver()
 
     def get(self):
+        wait = WebDriverWait(self.driver, 10)
         self.driver.get(pm.login["url"])
         self.driver.maximize_window()
         self.driver.implicitly_wait(2)
         self.driver.find_element(By.XPATH, pm.f_xpath["email"]).send_keys(pm.login["email"])
         self.driver.find_element(By.XPATH, pm.f_xpath["Submit"]).click()
+        wait.until(EC.visibility_of_element_located((By.XPATH, "//input[@type='password']")))
         self.driver.find_element(By.XPATH, pm.f_xpath["password"]).send_keys(pm.login["password"])
         self.driver.find_element(By.XPATH, pm.f_xpath["SignIn"]).click()
         self.driver.implicitly_wait(5)
@@ -34,16 +36,16 @@ class addProject:
         self.driver.implicitly_wait(5)
         self.driver.find_element(By.XPATH, pm.f_xpath["addproject"]).click()
         # Adding new project in Project Management
-        wait = WebDriverWait(self.driver, 10)
-        clientName = self.driver.find_element(By.XPATH, pm.f_xpath["clientName"])
-        clientName.send_keys(pm.Proj1["clientName"])
+
+        clientname = self.driver.find_element(By.XPATH, pm.f_xpath["clientName"])
+        clientname.send_keys(pm.Proj1["clientName"])
         client = self.driver.find_element(By.CSS_SELECTOR, pm.f_xpath["client"])
         action = ActionChains(self.driver)
         action.move_to_element(client).click().perform()
-        projectName = (self.driver.find_element(By.XPATH, pm.f_xpath["projectName"]))
-        projectName.send_keys(pm.Proj1["projectName"])
-        testDescription = (self.driver.find_element(By.XPATH, pm.f_xpath["testDescription"]))
-        testDescription.send_keys(pm.Proj1["testDescription"])
+        projectname = (self.driver.find_element(By.XPATH, pm.f_xpath["projectName"]))
+        projectname.send_keys(pm.Proj1["projectName"])
+        testdescription = (self.driver.find_element(By.XPATH, pm.f_xpath["testDescription"]))
+        testdescription.send_keys(pm.Proj1["testDescription"])
         notes = self.driver.find_element(By.XPATH, pm.f_xpath["notes"])
         notes.send_keys(pm.Proj1["notes"])
         email = self.driver.find_element(By.XPATH, pm.f_xpath["emailid"])
@@ -88,14 +90,6 @@ class addProject:
         self.driver.execute_script("arguments[0].value = arguments[1]", file_input, pm.login["filepath"])
         add = self.driver.find_element(By.XPATH,"//button[@type='submit']")
         add.click()
-
-
-        # DatePicker = DatePickerAutomation()
-        # time.sleep(3)
-        # date_to_select = '15-Apr-2024'
-        # DatePicker.select_date(date_to_select)
-        # time.sleep(3)
-        # print("click on button")
 
 
 if __name__ == "__main__":

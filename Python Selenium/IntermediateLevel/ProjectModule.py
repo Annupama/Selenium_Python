@@ -8,7 +8,7 @@ login = {
 
 f_xpath = {
   "email": "//input[@type='email']",
-  "Submit": "//input[@type='submit']",
+  "Submit": "//input[@id='idSIButton9']",
   "password": "//input[@type='password']",
   "SignIn": "//input[@id='idSIButton9']",
   "yes": "//input[@id='idSIButton9']",
