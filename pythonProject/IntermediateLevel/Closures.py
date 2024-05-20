@@ -1,6 +1,52 @@
 # A function that is defined inside another function is known as a nested function.
 # Nested functions are able to access variables of the enclosing scope.
 # these non-local variables can be accessed only within their scope and not outside their scope.
+# Closures in Python are a powerful concept where a nested function is returned from another function,
+# and the nested function has access to the variables in the outer function's scope, even after the outer function has finished executing.
+# Basic Closure:
+def outer_func(x):
+    def inner_func(y):
+        return x+y
+    return inner_func
+
+
+closure = outer_func(5)
+print(closure(3))
+
+# Using Closures for Data Encapsulation:
+
+
+def counter():
+    count = 0
+
+    def increment():
+        nonlocal count
+        count += 1
+        return count
+
+    return increment
+
+
+counter1 = counter()
+print(counter1())  # Output: 1
+print(counter1())  # Output: 2
+
+# Closures with Higher-Order Functions:
+
+
+def multiplier(factor):
+    def multiply(n):
+        return n * factor
+    return multiply
+
+
+double = multiplier(2)
+triple = multiplier(3)
+print(double(5))
+print(triple(5))
+
+# Closures are particularly useful when you want to create functions with behavior that depends on some data but don't want to expose that data to the global scope.
+
 def outerFunction(text):
     def innerFunction():
         print(text)
