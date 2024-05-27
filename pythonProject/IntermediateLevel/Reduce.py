@@ -94,3 +94,34 @@ def reduce(function, iterable, initializer=None):
 tup = (2, 1, 0, 2, 2, 0, 0, 2)
 print(reduce(lambda x, y: x + y, tup, 6))    # Output is 15
 
+# Sum of numbers in a list:
+from functools import reduce
+numbers = [1, 2, 3, 4, 5]
+# Using reduce with lambda to calculate the sum of numbers
+sum_of_numbers = reduce(lambda x, y: x + y, numbers)
+print(sum_of_numbers)  # Output: 15
+
+
+# Find the maximum number in a list:
+numbers = [5, 8, 3, 10, 1]
+# Using reduce with lambda to find the maximum number
+max_number = reduce(lambda x, y: x if x > y else y, numbers)
+print(max_number)  # Output: 10
+
+
+# Concatenate strings in a list:
+words = ["hello", "world", "this", "is", "reduce"]
+# Using reduce with lambda to concatenate strings
+concatenated_string = reduce(lambda x, y: x + y, words)
+print(concatenated_string)  # Output: helloworldthisisreduce
+
+
+# Multiply all numbers in a list:
+numbers = [1, 2, 3, 4, 5]
+# Using reduce with lambda to multiply all numbers
+product_of_numbers = reduce(lambda x, y: x * y, numbers)
+print(product_of_numbers)  # Output: 120
+
+
+
+
