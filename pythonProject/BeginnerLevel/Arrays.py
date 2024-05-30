@@ -80,3 +80,48 @@ for j in arr:
     k+=1
 
 print(arr.index(val))
+
+
+# Creating an empty array
+my_array1 = []
+
+# Creating an array with initial values
+my_array2 = [1, 2, 3, 4, 5]
+
+# Slicing Arrays
+subset = my_array2[1:4]
+print(subset)
+
+# Modifying elements
+my_array2[2] = 10
+print(my_array2)
+
+# Adding elements to end of the array
+my_array2.append(6)
+
+my_array2.insert(2,7)
+
+# Removing elements by value
+my_array2.remove(3)  # removes the first occurrence of value 3
+print(my_array)
+
+# Removing elements by index
+del my_array2[0]  # removes the element at index 0
+print(my_array)
+
+# Removing elements from the end
+popped_element = my_array2.pop()  # removes and returns the last element
+print(popped_element)
+
+# Iterating over elements in the array
+for element in my_array2:
+    print(element)
+
+# Finding the index of an element
+index = my_array2.index(4)  # returns the index of value 4
+print(index)
+
+# Checking if an element exists in the array
+print(10 in my_array2)  # prints False since 10 is not in the array
+
+
