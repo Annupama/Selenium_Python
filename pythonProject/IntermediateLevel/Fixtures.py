@@ -1,4 +1,5 @@
 # Fixtures are used in testing frameworks like pytest to set up a pre-defined state before running test functions.
+# Selenium framework we use fixtures for opening up a browser or setting up a database instances or creating some configuraton properties, environment variables.
 # Basic Fixture:
 import pytest
 
