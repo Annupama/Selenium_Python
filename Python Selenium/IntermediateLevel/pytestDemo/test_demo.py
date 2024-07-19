@@ -27,12 +27,5 @@ def test_SecondCreditCard():
     assert a+2 == 6, "Addition do not match"
 
 
-@pytest.fixture()
-def setup():
-    print("I will be executing first")
-
-
-def test_fixtureDemo(setup):
-    print("I will execute steps in fixture demo method")
 
 
