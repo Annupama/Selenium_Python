@@ -10,3 +10,6 @@ def test_secondProgram():
 def test_firstCreditCard():
     print("Good Morning")
 
+
+def test_crossBrowser(crossBrowser):
+    print(crossBrowser[1])

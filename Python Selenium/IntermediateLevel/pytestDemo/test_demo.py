@@ -11,6 +11,8 @@
 # Can run specific file with py.test <filename>
 # Can mark (tag) tests @pytest.mark.smoke an then run with -m
 # Can skip the test with @pytest.mark.skip
+# datadriven and Parameterization can be done with return statements in tuple format
+# when you define fixture scope to class only, it will run once before class is initiated and at the end
 import pytest
 
 
