@@ -20,6 +20,7 @@ def setup(request):
     driver.implicitly_wait(5)
     driver.find_element(By.XPATH, "//input[@id='idSIButton9']").click()
     driver.implicitly_wait(20)
+
     request.cls.driver = driver
     yield
     driver.close()
