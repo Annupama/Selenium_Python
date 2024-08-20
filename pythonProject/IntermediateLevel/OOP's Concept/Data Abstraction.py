@@ -55,3 +55,21 @@ rectangle = Rectangle(4, 6)
 # Calling the area method on different objects
 print("Area of circle:", circle.area())  # Output: 78.5
 print("Area of rectangle:", rectangle.area())  # Output: 24
+
+
+class Rectangle:
+    def __init__(self, length, width):
+        self._length = length
+        self._width = width
+
+    def area(self):
+        return self._length * self._width
+
+    def perimeter(self):
+        return 2 * (self._length + self._width)
+
+
+# Example usage
+rect = Rectangle(10, 5)
+print(rect.area())  # Output: 50
+print(rect.perimeter())  # Output: 30

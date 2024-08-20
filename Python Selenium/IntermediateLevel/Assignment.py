@@ -52,10 +52,11 @@ class addProject:
         email.send_keys(pm.Proj1["email"])
         pmoelement = self.driver.find_element(By.XPATH, pm.f_xpath["pmod"])
         pmoelement.click()
-        pmo = ["Divya Bandaru", "Pravallika Kanaparthi"]
-        for option in pmo:
-            label = self.driver.find_element(By.XPATH, pm.f_xpath["pmos"].format(option))
-            label.click()
+        time.sleep(3)
+        # pmo = ["Divya Bandaru", "Pravallika Kanaparthi"]
+        # for option in pmo:
+        #     label = self.driver.find_element(By.XPATH, pm.f_xpath["pmos"].format(option))
+        #     label.click()
         body1 = self.driver.find_element(By.XPATH, "//body")
         action.move_to_element(body1).click().perform()
         dropdown_element = self.driver.find_element(By.XPATH, pm.f_xpath["technologiesd"])
@@ -73,17 +74,17 @@ class addProject:
 
         )
         startdate.click()
-        date_to_select = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@aria-label='May 2, 2024']")))
+        date_to_select = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@aria-label='August 10, 2024']")))
         # "//button[@class='mat-calendar-body-cell mat-calendar-body-active' and @aria-label='May 2, 2024']")))
         date_to_select.click()
         # End Date
-        end_date = wait.until(expected_conditions.element_to_be_clickable((By.XPATH,
-                                                     "//mat-datepicker-toggle[@class ='mat-datepicker-toggle ng-tns-c53-2']//span[@class='mat-button-wrapper']//*[name()='svg']")))
-
-        end_date.click()
-        end_date_select = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@aria-label='May 25, 2024']")))
-                                                                 #"//button[@class='mat-calendar-body-cell' and @aria-label='May 25, 2024']")))
-        end_date_select.click()
+        # end_date = wait.until(expected_conditions.element_to_be_clickable((By.XPATH,
+        #                                              "//mat-datepicker-toggle[@class ='mat-datepicker-toggle ng-tns-c53-2']//span[@class='mat-button-wrapper']//*[name()='svg']")))
+        #
+        # end_date.click()
+        # end_date_select = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@aria-label='August 20, 2024']")))
+        #                                                          #"//button[@class='mat-calendar-body-cell' and @aria-label='May 25, 2024']")))
+        # end_date_select.click()
         file_input = wait.until(
             EC.visibility_of_element_located((By.XPATH, "//label[normalize-space()='Choose File']")))
         file_input.click()

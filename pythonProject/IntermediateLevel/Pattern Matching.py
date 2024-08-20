@@ -14,7 +14,7 @@ print(mo.group(1))
 areaCode, number = mo.groups()
 print("area code:", areaCode)
 print("number:", number)
-finditer
+
 # Match a parenthesis
 phoneNumRegex = re.compile(r'(\(\d\d\d\)) (\d\d\d-\d\d\d\d)')
 mo = phoneNumRegex.search('My phone number is (415) 555-4242.')

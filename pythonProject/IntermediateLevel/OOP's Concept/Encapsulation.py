@@ -53,3 +53,6 @@ circle.set_radius(-2)
 print("Radius after setting:", circle.get_radius())
 
 
+# Single Underscore (_): Indicates a variable is intended for internal use (convention).
+# Double Underscore (__): Triggers name mangling to make the variable more private and avoid name collisions, especially in subclasses.
+
