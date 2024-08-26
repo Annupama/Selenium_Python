@@ -114,3 +114,21 @@ with open('in.csv', 'w') as csvfile:
   reader = csv.DictReader(csvfile)
   for row in reader:
     print(row['first_name'], row['last_name'])
+
+
+lines = [
+    "  Hello, World!   ",
+    "  Python is awesome!   ",
+    "  Let's learn more!   "
+]
+
+# Create an iterator from the list of lines
+iterator = iter(lines)
+
+# Get the first line, strip the whitespace, and slice the first 5 characters
+first_line = next(iterator).strip()[:5]
+print(first_line)  # Output: 'Hello'
+
+# Get the next line, strip the whitespace, and slice the first 6 characters
+second_line = next(iterator).strip()[:6]
+print(second_line)  # Output: 'Python'

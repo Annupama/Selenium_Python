@@ -16,7 +16,7 @@ print(new_string)
 
 # Replace with groups using regular expressions
 original_string = "Hello, John Doe!"
-new_string = re.sub(r'Hello, (\w+) (\w+)!', r'Goodbye, \1!', original_string)
+new_string = re.sub(r'Hello, (\w+) (\w+)!', r'Goodbye, \2!', original_string)
 print(new_string)
 
 # Using a Function for Replacement:
