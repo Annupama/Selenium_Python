@@ -51,3 +51,9 @@ When Not to Use Generators
 2. When random access to elements is required (e.g., indexing).
 3. When you need to manipulate or modify the data set in place.
 
+
+------------------------
+Use Iterators when you need more control over the iteration process or need to create complex iteration patterns that cannot be easily achieved with a generator.
+Use Generators when you need to iterate over a sequence of data in a memory-efficient way, particularly for large datasets or when you want to represent an infinite stream of data.
+They are simpler, more concise, and more readable for most common use cases.
+
