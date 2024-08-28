@@ -1,0 +1,25 @@
+Iterators:
+An iterator in Python is an object that allows you to traverse through all the elements of a collection, such as a list or a tuple, one at a time.
+Iterators implement two methods:
+1. __iter__() - Returns the iterator object itself and is implicitly called at the start of loops.
+2. __next__() - Returns the next item from the collection. If no more items are available, it raises a StopIteration exception.
+
+Example of an Iterator:
+numbers = [1, 2, 3, 4]
+iter_obj = iter(numbers)  # Creating an iterator object
+
+print(next(iter_obj))  # Output: 1
+print(next(iter_obj))  # Output: 2
+print(next(iter_obj))  # Output: 3
+print(next(iter_obj))  # Output: 4
+print(next(iter_obj))  # Raises StopIteration
+
+Generators:
+Generators are a simple way of creating iterators using a function rather than a class.
+They allow you to iterate through a sequence of values lazily (one at a time) without storing the entire sequence in memory.
+This is especially useful for large datasets or streams of data.
+Generators are written using a function, but instead of return, they use yield to yield values one by one.
+
+Generator Expressions
+Generator expressions are a concise way to create generators, similar to list comprehensions but with parentheses instead of square brackets.
+They are useful when you want to iterate through a sequence without creating and storing the entire list in memory.
