@@ -45,5 +45,16 @@ for category, item in data:
 
 print(grouped)  # Output: {'fruit': ['apple', 'banana', 'orange'], 'vegetable': ['carrot']}
 
-# Handling Missing Data with setdefault()
+# Using setdefault() for Accumulating Results
+
+results = {}
+
+# Simulate adding values for multiple keys
+for key, value in [('group1', 10), ('group2', 20), ('group1', 30)]:
+    results.setdefault(key, []).append(value)
+
+print(results)  # Output: {'group1': [10, 30], 'group2': [20]}
+
+
+
 
