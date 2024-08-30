@@ -15,6 +15,8 @@ This is useful when you have multiple dictionaries representing different scopes
 It returns None or a specified default value if the key is not present.
 8. setdefault() Method - The setdefault() method returns the value of a key if it is in the dictionary.
 If not, it inserts the key with a specified default value.
+the syntax for setdefault():
+dictionary.setdefault(key, default_value)
 9. Dictionary Views (keys(), values(), items()) - Python dictionaries provide dynamic views of their keys, values, and items, which reflect changes to the dictionary.
 10. pop() and popitem() Methods - pop(key): Removes the specified key and returns its value. Raises a KeyError if the key is not found.
 popitem(): Removes and returns the last (key, value) pair as a tuple. Raises a KeyError if the dictionary is empty.
